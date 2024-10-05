@@ -204,7 +204,7 @@ const AllProducts = () => {
             <div className='w-full lg:w-3/4 grid grid-cols-2 md:grid-cols-3 gap-3'>
                 {perfumes.map((element,index)=>(
                     <PerfumeCard
-                        perfume={element}
+                      perfume={element}
                     />
                 ))}
             </div>

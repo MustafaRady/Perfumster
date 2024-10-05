@@ -20,7 +20,7 @@ import PerfumeCard from '../../Components/perfumeCard';
 import TestPerfume1 from '../../Assets/Test_perfumes/perfume2.png'
 
 import "./style.css"
-import Footer_1 from '../../Components/Footer_1/footer_1';
+import Footer_1 from '../../Components/Footer1/footer1';
 
 const SpecialsCards =({perfumeImage , backgroundImage })=>{
  
@@ -224,9 +224,7 @@ const ForHim = () => {
             {perfumes.map((element,index)=>(
                 
                 <PerfumeCard 
-                  name={element.name}
-                  price={element.price}
-                  image={element.Image}
+                  perfume={element}
                 />
             ))}
           </div>

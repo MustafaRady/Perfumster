@@ -4,7 +4,7 @@ import "./style.css"
 import Twitter from "../../Assets/Footer/twitter.png"
 import { Link } from 'react-router-dom'
 
-const Footer_2 = () => {
+const Footer2 = () => {
   return (
     <>
     
@@ -78,29 +78,58 @@ const Footer_2 = () => {
                     </h1>
                     <div className='flex flex-row gap-10 justify-between font-thin pl-6'>
                         <div className='flex flex-col gap-6 items-center text-[0.1em]'>
-                            <h1>New</h1>
-                            <h1>Women</h1>
+                            <Link
+                                to={'/new'}
+                                >
+                                <h1>New</h1>
+                            </Link>
+
+                            <Link
+                                to={'/for-her'}
+                                >
+                                <h1>Women</h1>
+                            </Link>
                         </div>
 
                         <span className='vertical_line transparent'></span>
 
                         <div className='flex flex-col gap-6 items-center text-[0.1em]'>
-                            <h1>Men</h1>
-                            <h1>Subscription</h1>
+                            <Link
+                                to={'/for-him'}
+                                >
+                                <h1>Men</h1>
+                            </Link>
+                            
+                            <Link
+                                to={'/subscription'}
+                                >
+                                <h1>Subscription</h1>
+                            </Link>
                         </div>
                     </div>
                     
                 </div>
 
                 <div className='flex flex-col w-11/12 m-auto items-center justify-center gap-6'>
+                    
                     <h1 className='footer_title_links text-sm '>
                         Get to know us
                     </h1>
 
                     <div className='w-11/12 sm:w-1/3 m-auto flex flex-col gap-6 items-center justify-between font-thin'>
                         <div className='flex w-full flex-row gap-6 justify-between items-center text-[0.1em]'>
+                        <Link
+                            to={'/about-us'}
+                        >
                             <h1>About Us</h1>
+                        </Link>
+
+                        <Link
+                            to={'/contact-us'}
+                            >
                             <h1>Contact Us</h1>
+                       
+                        </Link>
                         </div>
                         <h1 className='text-[0.1em]'>Connect</h1>
                     </div>
@@ -134,4 +163,4 @@ const Footer_2 = () => {
   )
 }
 
-export default Footer_2
+export default Footer2

@@ -1,7 +1,7 @@
 
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Footer_2 from './Components/Footer_2/footer_2';
+import Footer2 from './Components/Footer2/footer2';
 import Navbar from './Components/Navbar/navbar';
 import Home from './Pages/Home/home';
 import ForHer from './Pages/ForHer/forHer';
@@ -9,16 +9,39 @@ import ForHim from './Pages/ForHim/forHim';
 import New from './Pages/New/new';
 import Subscription from './Pages/Subscription/subscription';
 import AddToCart from './Pages/AddToCart/addToCart';
-import MyCart from './Pages/MyCart/myCart';
+import MyCart from './Pages/Cart/myCart';
 import Profile from './Pages/Profile/profile';
 import Auth from './Pages/Auth/auth';
 import AboutUs from './Pages/AboutUs/aboutUs';
 import PageNotFound from './Pages/PageNotFound/pageNotFound';
-import AllProducts from './Pages/AllProducts/allProducts';
-
+import AllProducts from './Pages/Products/allProducts';
+import Checkout from './Pages/Checkout/checkout';
+import { useEffect, useState } from 'react';
+import CreateAccount from './Components/createAccount';
+import Modal from 'react-modal'
 function App() {
+
+  
+  const [isModalOpen , setIsModalOpen] = useState(false);
+  const openModal=()=>{
+    setIsModalOpen(true);
+  }
+
+  useEffect(()=>{
+    setTimeout(()=>{
+      openModal();
+    },3000)
+  },[])
+
+  Modal.setAppElement(document.getElementById('root'));
+
   return (
-    <div>
+    <div className='helvetica'>
+      <CreateAccount 
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+      />
+
       <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -30,11 +53,12 @@ function App() {
         <Route path="/my-cart" element={<MyCart />} />
         <Route path="/profile" element={<Profile />} /> 
         <Route path="/auth" element={<Auth />} /> 
+        <Route path="/checkout" element={<Checkout/>}/>
         <Route path="/about-us" element={<AboutUs />} /> 
         <Route path="/products" element={<AllProducts />} /> 
         <Route path="/*" element={<PageNotFound />} /> 
       </Routes>
-      <Footer_2/>
+      <Footer2/>
     </div>
   );
 }

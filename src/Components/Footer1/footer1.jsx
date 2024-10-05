@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const Footer_1 = () => {
+const Footer1 = ({scrollIntoView}) => {
   return (
         <div className='w-full footer_container relative h-60'>
             <div className='w-full h-full flex flex-row justify-between '>
@@ -18,12 +19,19 @@ const Footer_1 = () => {
                         <h1 className='text-2xl sm:text-4xl'>heart desires</h1>
 
                         <div className='w-4/5 mx-auto gap-3 flex flex-col lg:flex-row justify-center '>
-                            <h1 className='footer_content_links cursor-pointer'>
-                                Explore our collection
-                            </h1>
+                            <Link
+                                to={'/products'}
+                                >
+                                <h1 className='footer_content_links cursor-pointer'>
+                                    Explore our collection
+                                </h1>
+                            </Link>
+                            
                             <span className='vertical_line lg:block hidden'></span>
                             <hr className=' horizontal_line m-auto lg:hidden' />
-                            <h1 className='footer_content_links cursor-pointer'>
+                            <h1 
+                                onClick={()=>scrollIntoView()}
+                                className='footer_content_links cursor-pointer'>
                                 Get one of our packages
                             </h1>
                         </div>
@@ -43,4 +51,4 @@ const Footer_1 = () => {
     )
 }
 
-export default Footer_1
+export default Footer1

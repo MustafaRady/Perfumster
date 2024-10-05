@@ -10,7 +10,7 @@ import Perfume6 from '../../Assets/Test_perfumes/perfume6.png'
 import Perfume7 from '../../Assets/Test_perfumes/perfume7.png'
 import Perfume8 from '../../Assets/Test_perfumes/perfume8.png'
 import PerfumeCard from '../../Components/perfumeCard'
-import Footer_1 from '../../Components/Footer_1/footer_1'
+import Footer_1 from '../../Components/Footer1/footer1'
 
 
 const New = () => {
@@ -86,9 +86,7 @@ const New = () => {
           {perfumes.map((element,index)=>(
               
               <PerfumeCard 
-                name={element.name}
-                price={element.price}
-                image={element.Image}
+                perfume={element}
               />
           ))}
         </div>

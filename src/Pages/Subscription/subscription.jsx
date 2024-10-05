@@ -10,11 +10,12 @@ import Perfume7 from '../../Assets/Test_perfumes/perfume7.png'
 import Perfume8 from '../../Assets/Test_perfumes/perfume8.png'
 import Line from '../../Assets/Subscription/Line 30.png'
 import Group_1 from '../../Assets/Subscription/Group_1.png'
-import Modal from 'react-modal';
+import { Link } from 'react-router-dom';
 import './style.css'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/bundle'
+import SubscriptionModal from '../../Components/subscriptionModal';
 
 
 
@@ -30,9 +31,15 @@ const SwipingElement =({perfume })=>{
             {perfume.name}
           </h1>
 
+
+          <Link 
+            to={'/addToCart'}
+          >
           <div className='card_button p-1 cursor-pointer helvetica text-sm '>
             Learn more
           </div>
+          </Link>
+          
         </div>
       </div>
   )
@@ -43,42 +50,52 @@ const Subscription = () => {
   const [clicked, setClicked] = useState("MidRange");
   const [swipe, setSwipe] = useState('');
 
+  const packagesRef= useRef(null);
   const swiperRef_desktop = useRef(null);
   const swiperRef_mobile = useRef(null);
   const perfumes = [
     {
         name: 'Perfume 1',
-        image: Perfume1 // Replace with your image path
+        image: Perfume1, // Replace with your image path
+        price: 49.99
     },
     {
         name: 'Perfume 2',
-        image: Perfume2 // Replace with your image path
+        image: Perfume2, // Replace with your image path
+        price: 59.99
     },
     {
         name: 'Perfume 3',
-        image: Perfume3 // Replace with your image path
+        image: Perfume3, // Replace with your image path
+        price: 45.00
     },
     {
         name: 'Perfume 4',
-        image: Perfume4 // Replace with your image path
+        image: Perfume4, // Replace with your image path
+        price: 79.99
     },
     {
         name: 'Perfume 5',
-        image: Perfume5 // Replace with your image path
+        image: Perfume5, // Replace with your image path
+        price: 39.99
     },
     {
         name: 'Perfume 6',
-        image: Perfume6 // Replace with your image path
+        image: Perfume6, // Replace with your image path
+        price: 85.50
     },
     {
         name: 'Perfume 7',
-        image: Perfume7 // Replace with your image path
+        image: Perfume7, // Replace with your image path
+        price: 60.00
     },
     {
         name: 'Perfume 8',
-        image: Perfume8 // Replace with your image path
+        image: Perfume8, // Replace with your image path
+        price: 72.25
     }
-  ];
+];
+
 
   const [isOpenModal ,setIsOpenModal] = useState(false);
   const [subscription,setSubscription] = useState(
@@ -89,6 +106,15 @@ const Subscription = () => {
     }
   )
 
+  const scrollToTargetDiv = () => {
+    if (packagesRef.current) {
+      packagesRef.current.scrollIntoView({
+        behavior: 'smooth', // Smooth scrolling
+        block: 'start', // Align to the top of the viewport
+      });
+    }
+  };
+
   const openModal = ()=>{
     setIsOpenModal(true);
   }
@@ -97,7 +123,6 @@ const Subscription = () => {
   }
 
   const slideNext_desktop = () => {
-    console.log('slideNext');
     if (swiperRef_desktop.current) {
         swiperRef_desktop.current.swiper.slideNext();
     }
@@ -110,7 +135,6 @@ const Subscription = () => {
   };
 
   const slideNext_mobile = () => {
-    console.log('slideNext');
     if (swiperRef_mobile.current) {
       swiperRef_mobile.current.swiper.slideNext();
     }
@@ -128,108 +152,20 @@ const Subscription = () => {
     }
   }
 
-  useEffect(()=>{
-    console.log(subscription);
-  },[subscription])
 
-  Modal.setAppElement(document.getElementById('root'));
 
   return (
 
       <>
-      <Modal
-        
-        isOpen ={isOpenModal}
-        onRequestClose = {closeModal}
-        style={customStyles}
-        >
-          <div className='w-11/12 mx-auto text-white'>
-            <h1 className='text-4xl richmond_display pb-10'>
-              Subscribe To : 
-            </h1>
-
-            <div className='w-full border_2 p-3 helvetica'>
-              <div className='flex flex-row justify-between '>
-                <div className='flex flex-col items-start '>
-                  <h1>{subscription.name} per month</h1>
-                  <h3 className='text-sm opacity-80'>{subscription.type} perfumes</h3>
-                </div>
-                <h1 className='opacity-80'>
-                  ${subscription.price}
-                </h1>
-              </div>
-
-              <hr className='w-full mt-4' />
-
-              <div className='py-5 flex flex-col gap-2'>
-                <div className="flex flex-row justify-between">
-                  <h1>
-                    SubTotal:
-                  </h1>
-                  <h2>
-                    ${subscription.price}
-                  </h2>
-                </div>
-
-                <div className="flex flex-row justify-between">
-                  <h1>
-                    Shipping:
-                  </h1>
-                  <h2>
-                    Enter Shipping address
-                  </h2>
-                </div>
-                <div className="flex flex-row justify-between">
-                  <h1>Total</h1>
-                  <h2>${subscription.price}</h2>
-                </div>
-              </div>
-              
-              
-            </div>
-
-            <div className='flex flex-col lg:flex-row gap-2 mt-10 helvetica'>
-                <div className='flex-1'>
-                  <h1 className='text-3xl'>Delivery Address</h1>
-
-                  <form id='deliveryAddress' action="" className='flex flex-col gap-2 w-full mt-2'>
-                    <select className='bg-transparent'>
-                      <option value="" className='text-white'>Select Country</option>
-                      <option value="">option 1</option>
-                      <option value="">option 2</option>
-                      <option value="">option 3</option>
-                    </select>
-                    <input type="text" placeholder='Address' />
-                    <input type="text" placeholder='Apartment, suite, etc. (optional)' />
-
-                    <div className='flex flex-col lg:flex-row gap-2'>
-                      <input type="text" placeholder='City' className='flex-1' />
-                      <input type="text" placeholder='Postal Code' className='flex-1' />
-                    </div>
-                  </form>
-                </div>
-
-                <div className='flex-1 flex flex-col gap-2 '>
-                  <h1 className='text-3xl'>Payment</h1>
-                  <h1 className='bg-[#D9D9D9] p-3'>Credit Card</h1>
-
-                  <form id='payment' action="" className='flex flex-col gap-2 w-full '>
-                    
-                    <input type="text" placeholder='Credit card Number' />
-                    <input type="text" placeholder='Postal Code' className='flex-1' />
-                  </form>
-                </div>
-            </div>
-
-            <div className='flex flex-row items-end justify-end mt-3 helvetica'>
-              <div className='bg-[#D9D9D9] px-6 py-2 cursor-pointer'>
-                <span>Checkout</span>
-              </div>
-            </div>
-          </div>
-      </Modal>
+      <SubscriptionModal
+        isOpenModal={isOpenModal}
+        closeModal={closeModal}
+        subscription={subscription}
+      />
       
-      <div className='bg-[#313131] pt-10 pb-10'>
+      <div 
+        ref={packagesRef}
+        className='bg-[#313131] pt-10 pb-10'>
         <div className='w-4/5 m-auto flex flex-col items-center justify-center gap-7 '>
               {/* Title */}
               <div className='text-white text-center text-5xl body_title mx-auto'>
@@ -360,14 +296,19 @@ const Subscription = () => {
           
 
           <div className='w-full flex flex-row justify-center mt-7 text-black'>
-              <div className=' bg-white flex flex-row items-center px-5 py-2 cursor-pointer'>
-                <span>View more</span> 
-                <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g id="mdi:chevron-right">
-                  <path id="Vector" d="M8.59009 16.6862L13.1701 12.1062L8.59009 7.5162L10.0001 6.1062L16.0001 12.1062L10.0001 18.1062L8.59009 16.6862Z" fill="#313131" style={{fill:'black',fillOpacity:1}}/>
-                  </g>
-                </svg>
-              </div>
+              <Link
+                to={'/products'}
+                >
+                <div className=' bg-white flex flex-row items-center px-5 py-2 cursor-pointer'>
+                  <span>View more</span> 
+                  <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="mdi:chevron-right">
+                    <path id="Vector" d="M8.59009 16.6862L13.1701 12.1062L8.59009 7.5162L10.0001 6.1062L16.0001 12.1062L10.0001 18.1062L8.59009 16.6862Z" fill="#313131" style={{fill:'black',fillOpacity:1}}/>
+                    </g>
+                  </svg>
+                </div>
+              </Link>
+              
           </div>
         </div>
         
@@ -478,9 +419,14 @@ const Subscription = () => {
               
               {/* Learn More Button */}
               <div className='flex flex-row items-center  bg-white cursor-pointer'>
-                <div className='px-5 py-1  text-black'>
-                  Learn more
-                </div>
+                <Link
+                  to={'/products'}
+                  >
+                  <div className='px-5 py-1  text-black'>
+                    Learn more
+                  </div>
+                </Link>
+                
 
                 <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g id="mdi:chevron-right">
@@ -506,7 +452,9 @@ const Subscription = () => {
                   <br /><br />
                   With our monthly selections, you'll never have to worry about running out of your favorite fragrances, as you'll always have a new and exciting scent to enjoy.
                 </p>
-                <div className='border w-1/2 px-4 py-2 text-center cursor-pointer'>
+                <div
+                  onClick={()=>scrollToTargetDiv()}
+                  className='border w-1/2 px-4 py-2 text-center cursor-pointer'>
                   <span className='opacity-80'>Start your subscription</span>
                 </div>
             </div>

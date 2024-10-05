@@ -1,21 +1,5 @@
-.explore_button{
-    display: inline-flex;
-    color: black;
-    justify-content: center;
-    align-items: center;
-    background: #FFF;
-    flex-shrink: 0;
-}
 
-.who_we_are_button{
-    background-color: transparent;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    color: #FFF;
-    border: 0.76px solid #FFF;
-}
+
 
 .body{
     background-image: radial-gradient(89.63% 59.76% at 48.67% 46%, color(display-p3 0.1922 0.1922 0.1922) 0%, color(display-p3 0 0 0) 100%);
@@ -25,9 +9,7 @@
     width: 100%; /* Full width */
 }
 
-.body_title{
-    font-family: "Richmond Display";
-}
+
 
 .package_chooser{
     border-radius: 13.965px;

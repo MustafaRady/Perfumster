@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 const PerfumeCard = ({perfume}) =>{
+
     const navigate = useNavigate();
 
     return(
@@ -14,7 +15,7 @@ const PerfumeCard = ({perfume}) =>{
   
             {/* Image */}
             <div className='w-full'>
-              <img src={perfume?.image} alt="" className='w-full' />
+              <img src={perfume?.Image} alt="" className='w-full' />
             </div>
   
           </div>

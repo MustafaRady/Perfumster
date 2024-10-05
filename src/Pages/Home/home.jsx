@@ -1,74 +1,71 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState,useRef } from 'react';
 import './style.css'
+import { Link } from 'react-router-dom';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 
-import Image from '../../Assets/Home/image.png';
-import Image1 from '../../Assets/Home/image1.png';
-import Image3 from '../../Assets/Home/image3.png';
-import Footer_1 from '../../Components/Footer_1/footer_1';
+import Background1 from '../../Assets/Home/image.png';
+import Background2 from '../../Assets/Home/image3.png';
+
+import SwipeImages from '../../Assets/Home/image1.png';
+
+import Footer1 from '../../Components/Footer1/footer1';
+import SubscriptionModal from '../../Components/subscriptionModal';
+import PackageCard from '../../Components/packageCard';
 
 
-
-const PackageCard = () => {
-  const array = [
-    {
-      Scent: '1Scent',
-      Price: '100',
-      detail:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam, ut quaeram, quid est.',
-      detail2: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam, ut quaeram, quid est.',
-
-      },
-    {
-      Scent: '2Scent',
-      Price: '200',
-      detail:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam, ut quaeram, quid est.',
-      detail2: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam, ut quaeram, quid est.',
-    },
-    {
-      Scent: '3Scent',
-      Price: '300',
-      detail:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam, ut quaeram, quid est.',
-      detail2: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam, ut quaeram, quid est.',
-
-      },
-  ]
-
-  return(
-    <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-center items-center'>
-      {array.map((item, index) => (
-        
-          <div className='flex flex-col gap-10 items-center justify-center card p-1 md:p-4 text-center py-10'>
-              <h1 className='scent text-3xl'>{item.Scent}</h1>
-              <h2 className='price text-6xl glow'>${item.Price}</h2>
-              <p className='w-3/4 m-auto text-sm opacity-65'>{item.detail}</p>
-              <p className='w-3/4 m-auto text-sm opacity-65'>{item.detail2}</p>
-              <div className='subscribe flex flex-row gap-2 py-2 px-3 items-center justify-center cursor-pointer'>
-                <span className='text-sm'>
-                  Subscribe
-                </span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
-                  <path d="M5.05664 10.2726L7.66459 7.66464L5.05664 5.05668L5.86346 4.25555L9.27255 7.66464L5.86346 11.0737L5.05664 10.2726Z" fill="black" style={{fill:'black',fillOpacity:1}}/>
-                </svg>
-              </div>
-          </div>
-      ))}
-    </div>
-  );
-}
 
 const Home = () => {
 
-    const [clicked, setClicked] = useState("MidRange");
-    const images = [Image,  Image3];
+    const [backgroundImages, setBackgroundImage] = useState([]);
+    const [isOpenModal, setIsOpenModal] = useState(false);
+    const [subscription,setSubscription] = useState(
+      {
+        name:'',
+        type:'MidRange',
+        price:''
+      }
+    )
+    const packagesRef = useRef(null);
+    
+    /*
+      The background images are going to be fetched from the server
+    */
+    const images = [Background1,  Background2];
+
+    useEffect(()=>{
+      //Dispatch 
+    },[])
+
+    const openModal =()=>{
+      setIsOpenModal(true);
+    }
+
+    const closeModal =()=>{
+      setIsOpenModal(false);
+    }
+
+    const scrollToTargetDiv = () => {
+      if (packagesRef.current) {
+        packagesRef.current.scrollIntoView({
+          behavior: 'smooth', // Smooth scrolling
+          block: 'start', // Align to the top of the viewport
+        });
+      }
+    };
+    
+
     return (
-      <div className='w-full'>
+
+      <div className='w-full text-white'>
+        <SubscriptionModal
+          isOpenModal={isOpenModal}
+          closeModal={closeModal}
+          subscription={subscription}
+        />
         <div className='w-full'>
           <Swiper
               modules={[Pagination]}
@@ -80,21 +77,20 @@ const Home = () => {
             
             {images.map((image, index) => (
             <SwiperSlide key={index}> 
-              <div className="relative">
-                  <img
-                      src={image}
-                      alt={`Slide ${index + 1}`} 
-                      className="w-full h-screen object-cover object-center "
-                  />
-                  <div className="absolute top-0 left-0 w-full h-full flex items-start justify-center">
+              <div className="h-full bg-cover bg-center py-20"
+                style={{
+                  backgroundImage:`url(${image})`
+                }}
+                >
+                  <div className=" flex items-start justify-center">
                       <div className='w-full px-2 lg:px-0 lg:w-4/5 mx-auto pt-5 flex flex-col gap-2'>
-                          <h1 className="text-white text-sm font-thin">
+                          <h1 className="text-sm font-thin">
                               Welcome To Perfumster
                           </h1>
-                          <h2 className='text-white text-6xl font-thin w-full lg:w-2/3 richmond'>
+                          <h2 className=' text-6xl font-thin w-full lg:w-2/3 richmond'>
                               Exclusive brands <br/>for you!
                           </h2>
-                          <p className='w-1/3 hidden md:block text-white font-thin opacity-80 text-sm'>
+                          <p className='w-1/3 hidden md:block font-thin opacity-80 text-sm'>
                               Welcome to our world of scents, where our vast collection of perfumes 
                               promises something special for everyone. Our extensive range includes a variety of fragrances,
                               from classic to contemporary, ensuring every preference is catered to. We pride ourselves on
@@ -103,12 +99,22 @@ const Home = () => {
                               our carefully curated collections are designed to bring joy and sophistication to every moment.
                           </p>
                           <div className='flex flex-row gap-2 mt-5'>
-                              <div className='explore_button p-1 px-2 font-thin text-sm cursor-pointer'>
+                            <Link
+                              to={'/products'}
+                              >
+                              <div className='bg-white text-black p-1 px-2 font-thin text-sm cursor-pointer'>
                                   Explore our collection
                               </div>
-                              <div className='who_we_are_button p-1 px-2 font-thin text-sm cursor-pointer'>
+                            </Link>
+                              
+                            <Link
+                              to={'/about-us'}
+                              >
+                              <div className='border p-1 px-2 font-thin text-sm cursor-pointer'>
                                   Who we are
                               </div>
+                            </Link>
+                              
                           </div>
                       </div>
                   </div>
@@ -122,15 +128,16 @@ const Home = () => {
 
         <div className='w-full body py-10'>
           <div className='w-4/5 m-auto flex flex-col items-center justify-center gap-7 '>
+            
             {/* Title */}
             <div className='text-white text-center text-5xl body_title'>
               Find what you desire quickly
             </div>
             
             <div className='hidden md:flex flex-row gap-2 '>
-              <img src={Image1} alt="" />
-              <img src={Image1} alt="" className='transform translate-y-3'  />
-              <img src={Image1} alt="" />
+              <img src={SwipeImages} alt="" />
+              <img src={SwipeImages} alt="" className='transform translate-y-3'  />
+              <img src={SwipeImages} alt="" />
             </div>
 
             <div className='w-4/5 block md:hidden '>
@@ -142,67 +149,93 @@ const Home = () => {
                 className='w-full'
               >
                 <SwiperSlide >
-                  <img src={Image1} alt="" className='mx-auto' />
+                  <img src={SwipeImages} alt="" className='mx-auto' />
                 </SwiperSlide>
 
                 <SwiperSlide >
-                  <img src={Image1} alt=""  className='mx-auto' />
+                  <img src={SwipeImages} alt=""  className='mx-auto' />
                 </SwiperSlide>
 
                 <SwiperSlide >
-                  <img src={Image1} alt=""  className='mx-auto' />
+                  <img src={SwipeImages} alt=""  className='mx-auto' />
                 </SwiperSlide>
               </Swiper>
             </div>
 
             {/* Start Shopping Button */}
-            <div className='start_shopping_button p-2 font-thin cursor-pointer'>
-              Start shopping
-            </div>
+            <Link
+              to={'/products'}
+              >
+              <div className='start_shopping_button p-2 font-thin cursor-pointer'>
+                <span>Start shopping</span>
+              </div>
+            </Link>
+            
           </div>
 
 
-          <div className='w-4/5 m-auto flex flex-col items-center justify-center gap-7 mt-10'>
+          <div 
+            ref={packagesRef}
+            className='w-4/5 m-auto flex flex-col items-center justify-center gap-7 mt-10'>
             {/* Title */}
-            <div className='text-white text-center text-5xl body_title mx-auto'>
-              Receive a package from our
-              <br />monthly drops            
+            <div className='text-white text-center text-5xl richmond_display mx-auto'>
+              <span>
+                Receive a package from our
+                <br />
+                monthly drops
+              </span>            
             </div>
           </div>
 
           {/* Choosing Package */}
           <div className='w-4/5 sm:w-2/5 flex lg:flex-row package_chooser  justify-center text-white mx-auto mt-10 font-thin'>
-            <div className={`flex-1 flex items-center justify-center p-2 sm:p-3  ${clicked === "Standard" ? 'clicked' : ''} cursor-pointer`}
-              onClick={() => setClicked("Standard")}
+            <div className={`flex-1 flex items-center justify-center p-2 sm:p-3  ${subscription.type === "Standard" ? 'clicked' : ''} cursor-pointer`}
+              onClick={() => {
+                setSubscription((prev)=>({
+                  ...prev,
+                  type:'Standard'
+                }))
+                }}
             >
               <span className='text-sm sm:text-base'>Standard</span>
               
             </div>
-            <div className={`flex-1 flex items-center justify-center p-2 sm:p-3  ${clicked === "MidRange" ? 'clicked' : ''} cursor-pointer`}
-              onClick={() => setClicked("MidRange")}
-            >
-              MidRange
+            <div className={`flex-1 flex items-center justify-center p-2 sm:p-3  ${subscription.type === "MidRange" ? 'clicked' : ''} cursor-pointer`}
+              onClick={() => {
+                setSubscription((prev)=>({
+                  ...prev,
+                  type:'MidRange'
+                }))
+                }}            >
+              <span>MidRange</span>
             </div>
-            <div className={`flex-1 flex items-center justify-center p-2 sm:p-3  ${clicked === "HighEnd" ? 'clicked' : ''} cursor-pointer`}
-              onClick={() => setClicked("HighEnd")}
+            <div className={`flex-1 flex items-center justify-center p-2 sm:p-3  ${subscription.type === "HighEnd" ? 'clicked' : ''} cursor-pointer`}
+              onClick={() => {
+                setSubscription((prev)=>({
+                  ...prev,
+                  type:'HighEnd'
+                }))
+                }}
             >
-              HighEnd
+              <span>HighEnd</span>
             </div>
           </div>
 
-          <div className='w-4/5 m-auto mt-10 text-white flex flex-row gap-3 justify-center items-center'>
-            <PackageCard />
+          <div
+            
+            className='w-4/5 m-auto mt-10 text-white flex flex-row gap-3 justify-center items-center'>
+            <PackageCard openModal={openModal} setSubscription={setSubscription} />
           </div>
 
           {/* Learn Now */}
           <div className=' w-full flex items-center justify-center mt-10'>
             <div className='text-black bg-white px-5 py-2 learn_now cursor-pointer' >
-              Learn Now
+              <span>Learn Now</span>
             </div>
           </div>
         </div>
 
-        <Footer_1/>
+        <Footer1 scrollIntoView={scrollToTargetDiv}/>
       </div>
 
       
