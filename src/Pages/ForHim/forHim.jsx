@@ -21,6 +21,7 @@ import TestPerfume1 from '../../Assets/Test_perfumes/perfume2.png'
 
 import "./style.css"
 import Footer_1 from '../../Components/Footer1/footer1';
+import { Link } from 'react-router-dom';
 
 const SpecialsCards =({perfumeImage , backgroundImage })=>{
  
@@ -86,42 +87,42 @@ const ForHim = () => {
     {
       name:'Tom ford Tobacco Vanille',
       price:123,
-      Image:Perfume1,
+      image:Perfume1,
     },
     {
       name:'Tom Ford Tuscan Leather',
       price:123,
-      Image:Perfume2,
+      image:Perfume2,
     },
     {
       name:'Tom Ford Lost Cherry',
       price:123,
-      Image:Perfume3,
+      image:Perfume3,
     },
     {
       name:'Tom Ford Black Orchid',
       price:123,
-      Image:Perfume4,
+      image:Perfume4,
     },
     {
       name:'Tom Ford oud Wood',
       price:123,
-      Image:Perfume5,
+      image:Perfume5,
     },
     {
       name:'Tom Ford Costa Azzura',
       price:123,
-      Image:Perfume6,
+      image:Perfume6,
     },
     {
       name:'Tom Ford Bitter Peach',
       price:123,
-      Image:Perfume7,
+      image:Perfume7,
     },
     {
       name:'Tom Ford Neroli Porofino',
       price:123,
-      Image:Perfume8,
+      image:Perfume8,
     }
   ]
 
@@ -142,9 +143,12 @@ const ForHim = () => {
                             Rhoncus morbi et augue nec, in id ullamcorper at sit. Condimentum sit nunc in eros scelerisque sed. Commodo in viverra nunc, ullamcorper ut. Non, amet, aliquet scelerisque nullam sagittis, pulvinar. Fermentum scelerisque sit consectetur hac mi. Mollis leo eleifend ultricies purus iaculis.
                           </p>
                           <div className='flex flex-row gap-2 mt-5'>
-                              <div className='explore_button p-2 px-3 md:p-3 md:px-6 font-thin text-sm cursor-pointer'>
-                                  Explore our collection
-                              </div>
+                              <Link to={'/products'}>
+                                <div className='bg-white text-black p-2 px-3 md:p-3 md:px-6 font-thin text-sm cursor-pointer'>
+                                    Explore our collection
+                                </div>
+                              </Link>
+                              
                           </div>
                       </div>
                   </div>
@@ -231,9 +235,12 @@ const ForHim = () => {
         </div>
 
         <div className='w-full flex flex-row items-center justify-center mt-10'>
-          <div className='p-2 bg-white text-black cursor-pointer'>
-            Explore our collection
-          </div>
+          <Link to={'/products'}>
+            <div className='p-2 bg-white text-black cursor-pointer'>
+              Explore our collection
+            </div>
+          </Link>
+          
         </div>
 
         

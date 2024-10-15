@@ -40,7 +40,7 @@ const AddToCart = ({perfume}) => {
 
   return (
     <div className='w-full bg-[#313131] py-10 helvetica'>
-      <div className='w-4/5 mx-auto flex flex-row gap-3'>
+      <div className='w-4/5 mx-auto flex flex-col lg:flex-row gap-3'>
         {/* FIRST COLUMN */}
         <div className='flex-1 border p-1 '>
           <img src={Perfume8} alt="" className='w-full' />
@@ -87,7 +87,7 @@ const AddToCart = ({perfume}) => {
         </div>
       </div>
 
-      <div className='w-4/5 mx-auto grid grid-cols-4 gap-3 mt-10'>
+      <div className='w-4/5 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mt-10'>
         {similarPerfumes.map((element,index)=>(
             <PerfumeCard
                 perfume={element}

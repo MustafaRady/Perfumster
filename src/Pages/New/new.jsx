@@ -10,7 +10,8 @@ import Perfume6 from '../../Assets/Test_perfumes/perfume6.png'
 import Perfume7 from '../../Assets/Test_perfumes/perfume7.png'
 import Perfume8 from '../../Assets/Test_perfumes/perfume8.png'
 import PerfumeCard from '../../Components/perfumeCard'
-import Footer_1 from '../../Components/Footer1/footer1'
+import Footer1 from '../../Components/Footer1/footer1'
+import { Link } from 'react-router-dom'
 
 
 const New = () => {
@@ -19,42 +20,42 @@ const New = () => {
     {
       name:'Tom ford Tobacco Vanille',
       price:123,
-      Image:Perfume1,
+      image:Perfume1,
     },
     {
       name:'Tom Ford Tuscan Leather',
       price:123,
-      Image:Perfume2,
+      image:Perfume2,
     },
     {
       name:'Tom Ford Lost Cherry',
       price:123,
-      Image:Perfume3,
+      image:Perfume3,
     },
     {
       name:'Tom Ford Black Orchid',
       price:123,
-      Image:Perfume4,
+      image:Perfume4,
     },
     {
       name:'Tom Ford oud Wood',
       price:123,
-      Image:Perfume5,
+      image:Perfume5,
     },
     {
       name:'Tom Ford Costa Azzura',
       price:123,
-      Image:Perfume6,
+      image:Perfume6,
     },
     {
       name:'Tom Ford Bitter Peach',
       price:123,
-      Image:Perfume7,
+      image:Perfume7,
     },
     {
       name:'Tom Ford Neroli Porofino',
       price:123,
-      Image:Perfume8,
+      image:Perfume8,
     }
   ]
 
@@ -92,15 +93,18 @@ const New = () => {
         </div>
       </div>
 
-      <div className='w-full flex flex-row items-center justify-center mt-10'>
-          <div className='p-2 bg-white text-black cursor-pointer'>
-            Explore our collection
-          </div>
-      </div>
+      <Link to={'/products'}>
+        <div className='w-full flex flex-row items-center justify-center mt-10'>
+            <div className='p-2 bg-white text-black cursor-pointer'>
+              Explore our collection
+            </div>
+        </div>
+      </Link>
+      
 
     </div>
 
-  <Footer_1/>
+  <Footer1/>
   </>
   )
 }

@@ -15,7 +15,7 @@ const PerfumeCard = ({perfume}) =>{
   
             {/* Image */}
             <div className='w-full'>
-              <img src={perfume?.Image} alt="" className='w-full' />
+              <img src={perfume?.image} alt="" className='w-full' />
             </div>
   
           </div>
@@ -32,7 +32,7 @@ const PerfumeCard = ({perfume}) =>{
         </div>
   
         {/* Buttons*/}
-        <div className='flex flex-row gap-3 font-thin'>
+        <div className='flex flex-col sm:flex-row gap-3 font-thin'>
           <div className='card_button p-1 cursor-pointer'>
             <span className="text-sm">Learn more</span>
           </div>

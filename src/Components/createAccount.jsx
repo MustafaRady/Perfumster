@@ -1,6 +1,7 @@
 import React from 'react'
 import CreateAccountOffer from '../Assets/Auth/createAccountOffer.png'
 import Modal from 'react-modal'
+import {Link} from 'react-router-dom'
 
 const CreateAccount = ({isModalOpen,setIsModalOpen}) => {
     
@@ -39,9 +40,12 @@ const CreateAccount = ({isModalOpen,setIsModalOpen}) => {
                             <li>Exclusive Offers: Get early access to sales and special discounts.</li>
                         </ul>
 
-                        <div className='w-full md:w-1/2 bg-white text-black p-2 px-4 text-center mt-3'>
-                            <span>Create Account</span>
-                        </div>
+                        <Link to={'/auth'}>
+                            <div className='w-full md:w-1/2 bg-white text-black p-2 px-4 text-center mt-3 cursor-pointer ' onClick={()=>closeModal()}>
+                                <span>Create Account</span>
+                            </div>
+                        </Link>
+                        
                     </div>
                 </div>
                 <div className='flex-1 max-h-full relative'>

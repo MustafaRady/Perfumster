@@ -19,6 +19,7 @@ import Checkout from './Pages/Checkout/checkout';
 import { useEffect, useState } from 'react';
 import CreateAccount from './Components/createAccount';
 import Modal from 'react-modal'
+import ContactUs from './Pages/ContactUs/contactUs';
 function App() {
 
   
@@ -50,6 +51,7 @@ function App() {
         <Route path="/for-him" element={<ForHim />} /> 
         <Route path="/subscription" element={<Subscription />} /> 
         <Route path="/addToCart" element={<AddToCart />} />
+        <Route path='/contact-us' element={<ContactUs/>}/>
         <Route path="/my-cart" element={<MyCart />} />
         <Route path="/profile" element={<Profile />} /> 
         <Route path="/auth" element={<Auth />} /> 

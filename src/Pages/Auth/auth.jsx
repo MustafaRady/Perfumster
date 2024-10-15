@@ -70,7 +70,7 @@ const Auth = () => {
             </div>
 
             <div>
-              <h1>Already have an account ? <span className='underline font-bold' onClick={()=>setIsSignUp(false)}>Login</span></h1>
+              <h1>Already have an account ? <span className='underline font-bold cursor-pointer' onClick={()=>setIsSignUp(false)}>Login</span></h1>
             </div>
           </div>
 
@@ -98,7 +98,7 @@ const Auth = () => {
             
               <div className="flex flex-col gap-2 w-full md:w-2/3">
                 <label className='opacity-60'>Password</label>
-                <input type="text" className='p-1 py-2 rounded-md text-black outline-none opacity-60' placeholder='Create Your Password' />
+                <input type="text" className='p-1 py-2 rounded-md text-black outline-none opacity-60' placeholder='Enter Your Password' />
               </div>
 
               <div className='w-2/3 md:w-1/4 bg-black text-white p-2 px-4 rounded-md text-center'>
@@ -121,7 +121,7 @@ const Auth = () => {
           </div>
 
           <div>
-            <h1>Don't have an account ? <span className='underline font-bold' onClick={()=>setIsSignUp(true)}>Create Account</span></h1>
+            <h1>Don't have an account ? <span className='underline font-bold cursor-pointer' onClick={()=>setIsSignUp(true)}>Create Account</span></h1>
           </div>
         </div>
 
