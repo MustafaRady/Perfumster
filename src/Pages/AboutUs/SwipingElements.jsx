@@ -47,7 +47,14 @@ const SwipingElements = () => {
             <Swiper
                 spaceBetween={5}
                 loop={true} 
-                slidesPerView={8}          
+                breakpoints={{
+                    750:{
+                        slidesPerView:6
+                    },
+                    800:{
+                        slidesPerView:7
+                    }
+                }}    
                 modules={[ Autoplay]} 
                 
             >

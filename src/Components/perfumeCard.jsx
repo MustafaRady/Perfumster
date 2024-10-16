@@ -14,8 +14,8 @@ const PerfumeCard = ({perfume}) =>{
             
   
             {/* Image */}
-            <div className='w-full'>
-              <img src={perfume?.image} alt="" className='w-full' />
+            <div className='w-full flex justify-center'>
+              <img src={perfume?.image} alt="" className='w-40 md:w-full' />
             </div>
   
           </div>
@@ -32,12 +32,12 @@ const PerfumeCard = ({perfume}) =>{
         </div>
   
         {/* Buttons*/}
-        <div className='flex flex-col sm:flex-row gap-3 font-thin'>
-          <div className='card_button p-1 cursor-pointer'>
+        <div className='flex flex-col sm:flex-row gap-3 font-thin justify-center'>
+          {/* <div className='card_button p-1 cursor-pointer'>
             <span className="text-sm">Learn more</span>
-          </div>
+          </div> */}
   
-          <div className='card_button p-1 cursor-pointer'
+          <div className=' border text-white text-center p-1 px-5 cursor-pointer'
             onClick={()=>navigate('/addToCart')}
             >
             <span className="text-sm">Add to cart</span>

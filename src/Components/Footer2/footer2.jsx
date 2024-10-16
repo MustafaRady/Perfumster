@@ -116,7 +116,7 @@ const Footer2 = () => {
                         Get to know us
                     </h1>
 
-                    <div className='w-11/12 sm:w-1/3 m-auto flex flex-col gap-6 items-center justify-between font-thin'>
+                    <div className='w-2/3 sm:w-1/3 m-auto flex flex-col gap-6 items-center justify-between font-thin'>
                         <div className='flex w-full flex-row gap-6 justify-between items-center text-[0.1em]'>
                         <Link
                             to={'/about-us'}

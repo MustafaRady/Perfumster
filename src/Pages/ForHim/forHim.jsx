@@ -17,47 +17,12 @@ import Perfume8 from '../../Assets/Test_perfumes/perfume8.png'
 import PerfumeCard from '../../Components/perfumeCard';
 
 
-import TestPerfume1 from '../../Assets/Test_perfumes/perfume2.png'
-
+import SpecialCard from '../../Components/specialsCard'
 import "./style.css"
 import Footer_1 from '../../Components/Footer1/footer1';
 import { Link } from 'react-router-dom';
 
-const SpecialsCards =({perfumeImage , backgroundImage })=>{
- 
-  return(
-    <>
-      <div className='w-full  relative mt-10 specials_card pb-5'>
-        <div className='absolute top-4 left-0 w-full flex items-center justify-center'>
-          <img src={TestPerfume1} alt=""  className='-rotate-12 w-52 lg:w-56'/>
-        </div>
-        <img src={backgroundImage} alt=""  className='mx-auto w-full'/>
-          <div className='w-full h-full pt-36 px-5 flex flex-col gap-5 items-center justify-center text-white ' >
-            <h1 className="special_name text-3xl">
-              Tom Ford
-            </h1>
-            <h2 className=' text-center text-sm'>
-              100% Authentic Fragrance Samples 1
-            </h2>
 
-            <hr className='horizontal transparent w-1/2 mx-auto opacity-50'></hr>
-
-            <h3 className='special_title font-bold'>
-              Tobacco Vanille
-            </h3>
-            <p className='special_text text-sm font-thin'>
-              Tom Ford reinvents classic tobacco with creamy tonka bean, vanilla, cocoa, dry fruit accords, and sweet wood sap – for a modern, opulent and heady impression of confidence and power.
-            </p>
-
-            <div className='learn_more_button text-sm font-thin px-2 cursor-pointer'>
-              <span>Learn more</span>
-            </div>
-          </div>
-      </div>
-    </>
-
-  );
-}
 
 const ForHim = () => {
   ///i will be fetching the men products 
@@ -195,7 +160,7 @@ const ForHim = () => {
           <div className='w-4/5 m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2'>
             {specials.map((element,index)=>(
               <div key={index} className='w-full'>
-                <SpecialsCards perfumeImage={element.perfumeImage} backgroundImage={element.backgroundImage} />
+                <SpecialCard perfumeImage={element.perfumeImage} backgroundImage={element.backgroundImage} />
               </div>
             ))}
           </div>
@@ -204,20 +169,18 @@ const ForHim = () => {
         {/* Product List */}
         <div className='py-9'>
             <div className='w-full text-center text-white'>
-              <h1 className='product_list text-xl md:text-3xl'> A product List</h1> 
+              <h1 className=' text-xl md:text-3xl'>Product List</h1> 
             </div>
 
-            <div className='w-1/3 flex flex-row items-center justify-center m-auto mt-10 '>
-                <div className={`${chosen === '60ml' ? 'chosen':'' } relative  py-4 px-14`}
+            <div className='w-2/3 md:1/2 lg:w-1/3 bg-[#454545] flex flex-row items-center justify-center m-auto mt-10 text-center'>
+                <div className={`${chosen === '60ml' ? 'text-black bg-white':'text-slate-200' } flex-1 p-3 px-5 md:py-4 md:px-10`}
                   onClick={()=>setChosen('60ml')}  
                 >
-                  <div className='absolute inset-0 bg-white opacity-10 z-10 '></div>
                   <span>60ml</span>
                 </div>
-                <div className={`${chosen === '100ml' ? 'chosen':' '} relative  py-4 px-10`}
+                <div className={`${chosen === '100ml' ? 'text-black bg-white':'text-slate-200 '} flex-1  p-3 px-5 md:py-4 md:px-10`}
                   onClick={()=>setChosen('100ml')}
                   >
-                  <div className='absolute inset-0 bg-white opacity-10 z-10 '></div>
                   <span>100ml</span>
                 </div>
             </div>

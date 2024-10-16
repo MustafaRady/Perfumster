@@ -229,9 +229,12 @@ const Home = () => {
 
           {/* Learn Now */}
           <div className=' w-full flex items-center justify-center mt-10'>
-            <div className='text-black bg-white px-5 py-2 learn_now cursor-pointer' >
-              <span>Learn Now</span>
-            </div>
+            <Link to={'/subscription'}>
+              <div className='text-black bg-white px-5 py-2 learn_now cursor-pointer' >
+                <span>Learn Now</span>
+              </div>
+            </Link>
+            
           </div>
         </div>
 

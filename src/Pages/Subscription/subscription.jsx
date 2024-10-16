@@ -483,7 +483,7 @@ const Subscription = () => {
             With our monthly selections, you'll never have to worry about running out of your favorite fragrances, as you'll always have a new and exciting scent to enjoy.
           </p>
 
-          <div className='border w-1/2 px-4 py-2 text-center cursor-pointer'>
+          <div className='border w-11/12 md:w-1/2 px-4 py-2 text-center cursor-pointer' onClick={()=>scrollToTargetDiv()}>
             <span className='opacity-80 helvetica'>Start your subscription</span>
           </div>
 

@@ -67,8 +67,8 @@ const Navbar = () => {
                     </div>
 
                     <div className='flex-1 flex flex-col justify-end'>
-                        <div className='auth_button text-black p-3'>
-                            <span className='auth_button_content_menu'>Sign in - Sign up</span>
+                        <div className='max-w-40 text-center bg-white rounded-full text-black p-2'>
+                            <span className=''>Sign in - Sign up</span>
                         </div>
                     </div>
                     
@@ -90,9 +90,9 @@ const Navbar = () => {
                     <NavLink
                         to='/'
                     >
-                        <div className='hidden sm:flex flex-col text-center nav_logo cursor-pointer'>
-                            <h1 className='text-3xl'>PERFUMSTER</h1>
-                            <h1 className=''>Decanted Perfumes</h1>
+                        <div className=' sm:flex flex-col text-center nav_logo cursor-pointer'>
+                            <h1 className='sm:text-3xl'>PERFUMSTER</h1>
+                            <h1 className=' sm:block'>Decanted Perfumes</h1>
                         </div>
                     </NavLink>
                     
@@ -153,8 +153,8 @@ const Navbar = () => {
                     
 
                     <Link to={'/auth'}>
-                        <div className='auth_button text-black p-2 cursor-pointer'>
-                            <span className='auth_button_content'>Sign in - Sign up</span>
+                        <div className='hidden md:flex rounded-full  bg-white text-black p-3 cursor-pointer'>
+                            <span className=' sm:block auth_button_content'>Sign in - Sign up</span>
                         </div>
                     </Link>
                     
